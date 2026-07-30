@@ -98,22 +98,118 @@ def unique_sorted(n):
         else:
             i+=1
 
+def rotate_arr(arr,k):
+    if not arr:
+        return arr
+    length = len(arr)
+    arr[:] = arr[length-(k%length):] + arr[:length-(k%length)]
+
+def rotate_swap(arr,k):
+    if not arr:
+        return arr
+    length = len(arr)
+    rotate = k%length
+    temp = []
+    temp.extend(arr[-rotate:])
+    temp.extend(arr[:-rotate])
+    return temp
+
+def left_rotate(arr,k):
+    if not arr:
+        return arr
+    rotate =k%len(arr)
+    arr[:] = arr[rotate:] + arr[:rotate]
+
+def left_swap(arr,k):
+    if not arr:
+        return 
+    length = len(arr)
+    k = k%length
+    for i in range(k-1,-1,-1):
+        j=i
+        while j < length-(k-i):
+            arr[j], arr[j+1] = arr[j+1], arr[j]
+            j+=1
+
+def rotate_arr_optimal(arr, k):
+    n = len(arr)
+    if n == 0: return arr
+    k = k % n
+    def reverse(l, r):
+        while l < r:
+            arr[l], arr[r] = arr[r], arr[l]
+            l += 1
+            r -= 1
+    reverse(0, n - 1)
+    reverse(0, k - 1)
+    reverse(k, n - 1)
+
+def zero_end(arr):
+    n = 0
+    temp = []
+    for i in arr:
+        if i != 0:
+            temp.append(i)
+        else:
+            n+=1
+    zero = [0] * n
+    arr[:] = temp + zero
+
+def while_zero(arr):
+    i = 0
+    count = 0
+    n = len(arr)
+    while i<n and arr[i]!=0:
+        count+=1
+        i+=1
+    j = i+1
+    while j<n:
+        if arr[j] != 0:
+            arr[j], arr[i] = arr[i], arr[j]
+            i+=1
+        j+=1
+        count+=1  
+    print(count)
+
+def move_zeroes(arr):
+    i = 0
+    count = 0
+    for j in range(len(arr)):
+        count +=1
+        if arr[j] != 0:
+            arr[i], arr[j] = arr[j], arr[i]
+            i += 1
+    print(count)
+
 
 if __name__ == "__main__":
-    arr = [-2,3,2,1,5,2,3,4,5,6,7,6,5,3,21,2,3,4,5,8]
+    #arr = [-2,3,2,1,5,2,3,4,5,6,7,6,5,3,21,2,3,4,5,8]
     #print(largest_element(arr))
     #print(smallest_element(arr))
     #print(second_largest(arr))
     #print(second_smallest(arr))
-    darr = sorted(arr)
-    barr = sorted(arr, reverse=True)
+    #n =[1,2]
+    #darr = sorted(arr)
+    #barr = sorted(arr, reverse=True)
     #print(check_sorted(arr))
     #print(check_sorted(darr))
     #print(check_sorted(barr))
     #uniqe(arr)
     #print(arr)
     #unique_set(arr)
-    unique_set_write(darr)
-    unique_sorted(barr)
-    print(darr)
-    print(barr)
+    #unique_set_write(darr)
+    #unique_sorted(barr)
+    #print(darr)
+    #print(barr)
+    #print(rotate_arr(arr,50))
+    #rotate_swap(arr,46)
+    #left_swap(arr,2)
+    #rotate_arr(arr,46)
+    #left_rotate(n,47)
+    #print(n)
+    #x = [0,100,101,0,0,2,20,0,0,2,0,4,5,0,6]
+    #y = [1,2,3,4,5,66,7,8,9,0,0,0,0,0,0,1,2,3,4,5,6,7,8,0,4,5,0]
+    #zero_end(x)
+    #while_zero(x)
+    #move_zeroes(y)
+    #print(x)
