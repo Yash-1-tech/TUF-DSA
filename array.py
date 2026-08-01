@@ -275,4 +275,5 @@ if __name__ == "__main__":
     '''
     arr1 = [0,1,3,4,4,4,5,6,7,8,9,10]
     arr2 = [0,5,5,6,6,6]
-    print(union_sorted(arr1, arr2))
+    #print(union_sorted(arr1, arr2))
+    #print(intersectin(arr1,arr2))
