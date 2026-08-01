@@ -181,6 +181,37 @@ def move_zeroes(arr):
             i += 1
     print(count)
 
+def union_sorted(arr1,arr2):
+    union =[]
+    i = j = 0
+    n =len(arr1)
+    m = len(arr2)
+    while i<n or j<m:
+        while i<n-1:
+            if arr1[i] == arr1[i+1]:
+                i+=1
+            else: break
+        while j<m-1:
+            if arr2[j]==arr2[j+1]:
+                j+=1
+            else: break
+        if i == n:
+            union.append(arr2[j])
+            j+=1
+        elif j == m:
+            union.append(arr1[i])
+            i+=1
+        elif arr1[i] == arr2[j]:
+            union.append(arr1[i])
+            i+=1
+            j+=1
+        elif arr1[i] < arr2[j]:
+            union.append(arr1[i])
+            i+=1
+        else:
+            union.append(arr2[j])
+            j+=1
+    return union
 
 if __name__ == "__main__":
     #arr = [-2,3,2,1,5,2,3,4,5,6,7,6,5,3,21,2,3,4,5,8]
@@ -213,3 +244,10 @@ if __name__ == "__main__":
     #while_zero(x)
     #move_zeroes(y)
     #print(x)
+    '''
+    arr1 = [1,1,2,3,4,4]
+    arr2 = [2,3,4,4,5,5]
+    '''
+    arr1 = [0,1,3,4,4,4,5,6,7,8,9,10]
+    arr2 = [0,5,5,6,6,6]
+    print(union_sorted(arr1, arr2))
