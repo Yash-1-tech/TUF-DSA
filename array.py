@@ -237,7 +237,38 @@ def intersectin(arr1, arr2):
         else:
             i+=1
     return intersection
-    
+
+def sum_2_find_missing_no(arrn,n):
+    sum = (n*(n+1))//2
+    for i in arrn:
+        sum -= i
+    return sum
+
+def xor_find_missing_element(arrn,n):
+    xor1 = xor2 = 0
+    for i in range(len(arrn)):
+        xor2 = xor2 ^ arrn[i]
+        xor1 = xor1 ^ (i+1)
+    return (xor1 ^n) ^ xor2
+
+def consecutive_ones(arr):
+    length = len(arr)
+    current , count = 0 , 0
+    for i in range(length):
+        if arr[i] == 1:
+            current+=1
+        else:
+            count = max(count,current)
+            current = 0
+    count = max(count,current)
+    return count
+
+def xor_once(arr):
+    xor = 0
+    for i in arr:
+        xor = xor ^ i
+    return xor
+
 if __name__ == "__main__":
     #arr = [-2,3,2,1,5,2,3,4,5,6,7,6,5,3,21,2,3,4,5,8]
     #print(largest_element(arr))
@@ -272,8 +303,16 @@ if __name__ == "__main__":
     '''
     arr1 = [1,1,2,3,4,4]
     arr2 = [2,3,4,4,5,5]
-    '''
     arr1 = [0,1,3,4,4,4,5,6,7,8,9,10]
     arr2 = [0,5,5,6,6,6]
+    '''
     #print(union_sorted(arr1, arr2))
     #print(intersectin(arr1,arr2))
+    #print(union_sorted(arr1,arr2))
+    #print(intersection(arr1, arr2))
+    #print(unique_intersection(arr1,arr2))
+    #print(sum_2_find_missing_no([1,2,4,5],5))
+    #print(xor_find_missing_element([1,2,4,5],5))
+    #print(consecutive_ones([1,1,0,0,1,1,1,0,1,1,0,0,0]))
+    #print(consecutive_ones([0,1,0]))
+    #print(xor_once([1,1,2,2,3,4,4]))
