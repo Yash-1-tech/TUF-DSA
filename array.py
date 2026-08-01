@@ -213,6 +213,31 @@ def union_sorted(arr1,arr2):
             j+=1
     return union
 
+def intersectin(arr1, arr2):
+    n ,m = len(arr1), len(arr2)
+    i, j = 0,0
+    intersection = []
+    while i < n and j < m:
+        while i < n-1:
+            if arr1[i] == arr1[i+1]:
+                i+=1
+            else:
+                break
+        while j < m-1:
+            if arr2[j] == arr2[j+1]:
+                j+=1
+            else:
+                break
+        if arr1[i]==arr2[j]:
+            intersection.append(arr1[i])
+            i+=1
+            j+=1
+        elif arr1[i] > arr2[j]:
+            j+=1
+        else:
+            i+=1
+    return intersection
+    
 if __name__ == "__main__":
     #arr = [-2,3,2,1,5,2,3,4,5,6,7,6,5,3,21,2,3,4,5,8]
     #print(largest_element(arr))
