@@ -1,0 +1,25 @@
+arr = [1,2,3,-3,1,1,1,4,2,-3]
+
+
+def nos_subarray(arr,k):
+    count = 0
+    length = len(arr)
+    for i in range(length):
+        for j in range(i,length):
+            if sum(arr[i:j+1]) == k:
+                count +=1
+    return count
+
+def prefix_sum(arr,k):
+    prefix = 0
+    count = 0
+    dict = {0:1}
+    for i in arr:
+        prefix += i
+        if prefix - k in dict:
+            count += dict[prefix-k]
+        dict[prefix] = dict.get(prefix,0) + 1
+    return count
+
+print(nos_subarray(arr,3))
+print(prefix_sum(arr,3))
